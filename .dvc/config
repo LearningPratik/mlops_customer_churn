@@ -1,0 +1,4 @@
+[core]
+    remote = dvc_churnstorage
+['remote "dvc_churnstorage"']
+    url = ../../churnstore

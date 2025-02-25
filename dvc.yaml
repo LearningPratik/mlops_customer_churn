@@ -1,0 +1,67 @@
+# for our dvc pipeline we are defining stages
+# think of it as, instructions for the pipeline
+# it will start executing from the first stage which is data_collection
+stages:
+
+  # first one to be executed
+  data_collection:
+
+    # cmd to execute this file
+    cmd: python src/data_collection.py
+
+    # to execute this we need this file which is in src/ folder
+    deps:
+    - src/data_collection.py
+
+    # this py file will give output 
+    # this is like what this file will return ? Here it will return train.csv and test.csv which we want to save in data/raw
+    outs:
+    - data/raw
+  
+  # second in line, processing
+  data_process:
+
+    # command to execute this file
+    cmd: python src/data_processing.py
+
+    # for executing this file we need th file itself and the data which is saved in data/raw
+    deps:
+    - data/raw
+    - src/data_processing.py
+
+    # it will return processed data which we will save in data/processed
+    outs:
+    - data/processed
+  
+  # third in line
+  train: 
+
+    # command to execute
+    cmd: python src/model_training.py
+
+    # this is use processed data and the file itself
+    deps:
+    - data/processed
+    - src/model_training.py
+
+    # it will return a pickled file
+    outs:
+    - models/rf_model_1.pkl
+  
+  # last in line, evaluate
+  evaluate: 
+
+    # command to execute
+    cmd: python src/model_evaluating.py
+
+    # it will use processed data, training model (pkl form), file itself
+    deps:
+    - data/processed
+    - models/rf_model_1.pkl
+    - src/model_evaluating.py
+
+    # it will return a txt file which has metrics 
+    outs:
+    - metrics/metrics.txt
+
+# to run the pipeline --> dvc repro (reproduce this pipeline)

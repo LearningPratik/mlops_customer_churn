@@ -1,0 +1,29 @@
+# This is like a dictionary where base, data_source, process, model and train are different dictionaries
+base:
+  # key and value
+  # key is parameter and value is it's value
+  # projects : name
+  projects: dvc_pipeline_churn
+  random_state: 42
+  target_col: churn
+
+# this is where our dataset will go
+data_source:
+  dir: data/raw
+  train_data_path: data/raw/train.csv
+  test_data_path: data/raw/test.csv
+
+# this is where our processed will go
+process:
+  dir: data/processed
+  train_file: train.csv
+  test_file: test.csv
+
+# training with different parameters, for now kept it simple
+# used n_estimators of RF model
+train: 
+  n_est: 5
+
+# pickled model for using it in evaluating
+models:
+  model_dir: models/rf_model_1.pkl

@@ -1,0 +1,71 @@
+schema: '2.0'
+stages:
+  data_collection:
+    cmd: python src/data_collection.py
+    deps:
+    - path: src/data_collection.py
+      hash: md5
+      md5: 676c6e1f71ddecbfec7342e001c36bbb
+      size: 525
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 860cd751ecf95fd8cccc4900cc95e712.dir
+      size: 1005608
+      nfiles: 2
+  data_process:
+    cmd: python src/data_processing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 860cd751ecf95fd8cccc4900cc95e712.dir
+      size: 1005608
+      nfiles: 2
+    - path: src/data_processing.py
+      hash: md5
+      md5: 7ca3a4d7853c261917b10c8a968bc680
+      size: 2632
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 140fcd0755fc8634c61e6e75f5ba62ac.dir
+      size: 884149
+      nfiles: 2
+  train:
+    cmd: python src/model_training.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 140fcd0755fc8634c61e6e75f5ba62ac.dir
+      size: 884149
+      nfiles: 2
+    - path: src/model_training.py
+      hash: md5
+      md5: a3a0438ff1ee4269dfd55924a2c75f08
+      size: 4744
+    outs:
+    - path: models/rf_model_1.pkl
+      hash: md5
+      md5: a6079dccd34971d20171751f8ae2d3cb
+      size: 787509
+  evaluate:
+    cmd: python src/model_evaluating.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 140fcd0755fc8634c61e6e75f5ba62ac.dir
+      size: 884149
+      nfiles: 2
+    - path: models/rf_model_1.pkl
+      hash: md5
+      md5: a6079dccd34971d20171751f8ae2d3cb
+      size: 787509
+    - path: src/model_evaluating.py
+      hash: md5
+      md5: 7ae162a7804d4ee3428306f26c9ce818
+      size: 2947
+    outs:
+    - path: metrics/metrics.txt
+      hash: md5
+      md5: 3d154e11aba58a79e8d8ea7867184992
+      size: 66
