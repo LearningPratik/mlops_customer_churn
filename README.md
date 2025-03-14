@@ -47,3 +47,14 @@ MLops tools: DVC (pipeline), MLFlow (experiment tracking)
 * some features are with 3 categories and pattern for this categories is (2 are balanced and 1 is either higher or lower in number)
 * ex for above are --> contract, streamingmovies, payment methods
 * there are only 2 numerical columns and other are categorical columns
+* the analysis reveals a strong association between contract type and churn, with month-to-month contracts exhibiting higher churn rates
+  
+![image](https://github.com/user-attachments/assets/05f2c246-4d84-4983-941f-d20b88235d9d)
+
+![image](https://github.com/user-attachments/assets/5cd483f2-068e-4f7e-b21b-6ee1c514fcf9)
+
+# Model results 
+* As for the start just applied Random Forest for it's robustness and also because of unbalanced dataset, I decided to use Random Forest with default parameters
+* Results were not very promising but would be experimenting with parameters and other models.
+
+
