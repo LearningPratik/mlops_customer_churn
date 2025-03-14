@@ -14,7 +14,7 @@ This project aims to identify customers who are likely to leave so that we can r
 # Dataset:
 
 * Dataset has been taken from Kaggle, and raw dataset can be downloaded from here. https://www.kaggle.com/datasets/blastchar/telco-customer-churn
-* Classes [Customer will EXIT(1) or NOT(0)] are properly balanced
+* Classes [Customer will churn or not]
 
 
 # Notebook contains the EDA, data processing
@@ -42,20 +42,8 @@ Packages: pandas, numpy, sklearn, fastapi, seaborn <br>
 MLops tools: DVC (pipeline), MLFlow (experiment tracking)
 
 
-1] Did some EDA for finding relationship between columns
-
-2] Processed the data
-
-3] trained the data on machine learning model
-
-4] evaluated to check model's performance on unseen data
-
-Mlops practise
----
-
-1] Created a DVC pipeline
-   - pipeline to execute processing, training and evaluating
-   - using DVC for tracking the version of data
-     
-2] Mlflow
-   - For experiment tracking
+# Results and observation
+* Churn column, which is our very unbalanced (planning to use resampling techniques)
+* some features are with 3 categories and pattern for this categories is (2 are balanced and 1 is either higher or lower in number)
+* ex for above are --> contract, streamingmovies, payment methods
+* there are only 2 numerical columns and other are categorical columns
