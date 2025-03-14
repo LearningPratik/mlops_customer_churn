@@ -33,7 +33,13 @@ https://github.com/LearningPratik/mlops_customer_churn/tree/main/src
 
 ![image](https://github.com/user-attachments/assets/60748462-e884-44e3-a621-c4032ea21b30)
 
+![image](https://github.com/user-attachments/assets/b9f1fa5c-7aec-4ac9-a95f-3b12dd6e9b95)
 
+
+# Techstack
+Python version : 3.10 <br>
+Packages: pandas, numpy, sklearn, fastapi, seaborn <br>
+MLops tools: DVC (pipeline), MLFlow (experiment tracking)
 
 
 1] Did some EDA for finding relationship between columns
